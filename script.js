@@ -17,16 +17,28 @@ var Counter = React.createClass({
         });
     },
 
+    zero: function() {
+        this.setState({
+            counter: this.state.counter = 0
+        });
+    },
+
     render: function() {
         return React.createElement('div', {},
-            React.createElement('div', { onClick: this.increment },
-                React.createElement('span', {}, 'Licznik ' + this.state.counter)
-            ),
-            React.createElement('div', { onClick: this.decrement },
-                React.createElement('span', {}, 'Licznik' - this.state.counter)
-            )
+            React.createElement('span', {}, this.state.counter),
+            React.createElement('button', { onClick: this.increment, className: 'button' }, '+'),
+            React.createElement('button', { onClick: this.decrement }, '-'),
+            React.createElement('Button', { onClick: this.zero }, '0')
         );
-    }
+    },
+    // render: function() {
+    //     return React.createElement('div', {},
+    //         React.createElement('div', { onClick: this.decrement },
+    //             React.createElement('button', {}, 'Licznik ' - this.state.counter)
+    //         ),
+    //     )
+    // }
+
 });
 
 var element = React.createElement(Counter, {})
