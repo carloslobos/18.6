@@ -22,22 +22,22 @@ var Counter = React.createClass({
             counter: this.state.counter = 0
         });
     },
+    // red: function() {
+    //     this.setState({
+    //         createClass: 'red'
+    //     })
+    // },
 
     render: function() {
         return React.createElement('div', {},
             React.createElement('span', {}, this.state.counter),
             React.createElement('button', { onClick: this.increment }, '+'),
             React.createElement('button', { onClick: this.decrement }, '-'),
-            React.createElement('Button', { onClick: this.zero }, '0')
+            React.createElement('Button', { onClick: this.zero }, '0'),
+            // React.createElement('button', { onClick: this.red },
+            //     React.createElement('', { className: 'red', red }))
         );
     },
-    // render: function() {
-    //     return React.createElement('div', {},
-    //         React.createElement('div', { onClick: this.decrement },
-    //             React.createElement('button', {}, 'Licznik ' - this.state.counter)
-    //         ),
-    //     )
-    // }
 
 });
 
