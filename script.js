@@ -21,9 +21,7 @@ var Counter = React.createClass({
     },
     shouldComponentUpdate: function () {
         console.log('This method allows your Component to exit the Update life cycle if there is no reason to apply a new render.');
-        return {
-            counter: true
-        }
+        return true
     },
     componentWillUpdate: function () {
         console.log('This method is called when method shouldComponentUpdate() has value: true.')
