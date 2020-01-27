@@ -1,8 +1,7 @@
 var Counter = React.createClass({
     getDefaultProps: function() {
-        return {
-            console: console.log('getDefaultProps property is a function that returns an Object to create initial props.')
-        }
+        console.log('getDefaultProps property is a function that returns an Object to create initial props.')
+        
     },
     getInitialState: function() {
         return {
@@ -10,8 +9,28 @@ var Counter = React.createClass({
             console: console.log('Define initialize state')
         };
     },
-
-    increment: function() {
+    componentWillMount: function() { 
+        console.log('This method is called just before a component mounts on the DOM or the render method is called. After this method, the component gets mounted.') 
+    },
+    componentDidMount: function() {
+        console.log('This method is a good place to set up any subscriptions.') 
+    },
+    componentWillReceiveProps: function(){
+        console.log('This method is called when props are passed to the Component instance.')
+    },
+    // shouldComponentUpdate: function () {
+    //     console.log('This method allows your Component to exit the Update life cycle if there is no reason to apply a new render.')
+    // },
+    componentWillUpdate: function () {
+        console.log('This method is called when method shouldComponentUpdate() has value: true.')
+    },
+    componentDidUpdate: function () {
+        console.log('It can be useful to perform some action when the state changes.')
+    }, 
+    componentWillUnmount : function () {
+        console.log('It is the last function to be called immediately before the component is removed from the DOM. It is generally used to perform clean-up for any DOM-elements')
+    },
+     increment: function() {
         this.setState({
             counter: this.state.counter + 1
         });
@@ -28,16 +47,8 @@ var Counter = React.createClass({
             counter: this.state.counter = 0
         });
     },
-    // red: function() {
-    //     this.setState({
-    //         createClass: 'red'
-    //     })
-    // },
-    componentWillMount: function() {
-        return {
-            console: console.log('This method is called just before a component mounts on the DOM or the render method is called. After this method, the component gets mounted.')
-        }
-    },
+
+    
 
     render: function() {
         return React.createElement('div', {},
@@ -47,54 +58,15 @@ var Counter = React.createClass({
             React.createElement('button', { onClick: this.decrement }, '-'),
             React.createElement('Button', { onClick: this.zero }, '0'),
             console.log('The render function should be pure, meaning that it does not modify component state, it returns the same result each time it’s invoked, and it does not directly interact with the browser.')
-            // React.createElement('button', { onClick: this.red },
-            //     React.createElement('', { className: 'red', red }))
         );
     },
 
-    componentDidMount: function() {
-        return {
-            console: console.log('This method is a good place to set up any subscriptions.')
-        }
-    }
+   
 
 });
-
-var YourKilo = React.createClass({
-    getInitialState: function() {
-        return {
-            kilo: 70
-        }
-    },
-    increment: function() {
-        this.setState({
-            kilo: this.state.kilo + 1
-        });
-    },
-    decrement: function() {
-        this.setState({
-            kilo: this.state.kilo - 1
-        });
-    },
-    start: function() {
-        this.setState({
-            kilo: this.state.kilo = 70
-        });
-    },
-    render: function() {
-        return React.createElement('div', {},
-            React.createElement('h1', {}, 'Your weight.'),
-            React.createElement('span', {}, this.state.kilo + 'kg'),
-            React.createElement('button', { onClick: this.increment }, 'Add some kgs'),
-            React.createElement('button', { onClick: this.decrement }, 'Remove some kgs'),
-            React.createElement('button', { onClick: this.start }, 'Reset your weight')
-        );
-    }
-
-})
 
 var element = React.createElement('div', {},
     React.createElement(Counter, {}),
     React.createElement(Counter, {}),
-    React.createElement(YourKilo, {}))
+    React.createElement(Counter, {}))
 ReactDOM.render(element, document.getElementById('app'));
