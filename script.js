@@ -1,13 +1,13 @@
 var Counter = React.createClass({
     getDefaultProps: function() {
         return {
-            console: console.log('Method: getDefaultProps')
+            console: console.log('getDefaultProps property is a function that returns an Object to create initial props.')
         }
     },
     getInitialState: function() {
         return {
             counter: 0,
-            console: console.log('Method: getInitialState')
+            console: console.log('Define initialize state')
         };
     },
 
@@ -35,7 +35,7 @@ var Counter = React.createClass({
     // },
     componentWillMount: function() {
         return {
-            console: console.log('Method: componentWillMount')
+            console: console.log('This method is called just before a component mounts on the DOM or the render method is called. After this method, the component gets mounted.')
         }
     },
 
@@ -46,7 +46,7 @@ var Counter = React.createClass({
             React.createElement('button', { onClick: this.increment }, '+'),
             React.createElement('button', { onClick: this.decrement }, '-'),
             React.createElement('Button', { onClick: this.zero }, '0'),
-            console.log('Method: render')
+            console.log('The render function should be pure, meaning that it does not modify component state, it returns the same result each time it’s invoked, and it does not directly interact with the browser.')
             // React.createElement('button', { onClick: this.red },
             //     React.createElement('', { className: 'red', red }))
         );
@@ -54,7 +54,7 @@ var Counter = React.createClass({
 
     componentDidMount: function() {
         return {
-            console: console.log('Method: componentDidMount')
+            console: console.log('This method is a good place to set up any subscriptions.')
         }
     }
 
