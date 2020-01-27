@@ -3,10 +3,11 @@ var Counter = React.createClass({
         console.log('getDefaultProps property is a function that returns an Object to create initial props.')
         
     },
-    getInitialState: function() {
+    getInitialState: function() { 
+        console.log('Define initialize state');
         return {
             counter: 0,
-            console: console.log('Define initialize state')
+           
         };
     },
     componentWillMount: function() { 
@@ -18,9 +19,12 @@ var Counter = React.createClass({
     componentWillReceiveProps: function(){
         console.log('This method is called when props are passed to the Component instance.')
     },
-    // shouldComponentUpdate: function () {
-    //     console.log('This method allows your Component to exit the Update life cycle if there is no reason to apply a new render.')
-    // },
+    shouldComponentUpdate: function () {
+        console.log('This method allows your Component to exit the Update life cycle if there is no reason to apply a new render.');
+        return {
+            counter: true
+        }
+    },
     componentWillUpdate: function () {
         console.log('This method is called when method shouldComponentUpdate() has value: true.')
     },
@@ -50,14 +54,14 @@ var Counter = React.createClass({
 
     
 
-    render: function() {
+    render: function() {            
+        console.log('The render function should be pure, meaning that it does not modify component state, it returns the same result each time it’s invoked, and it does not directly interact with the browser.')
         return React.createElement('div', {},
             React.createElement('h1', {}, 'Just a counter.'),
             React.createElement('span', {}, this.state.counter),
             React.createElement('button', { onClick: this.increment }, '+'),
             React.createElement('button', { onClick: this.decrement }, '-'),
             React.createElement('Button', { onClick: this.zero }, '0'),
-            console.log('The render function should be pure, meaning that it does not modify component state, it returns the same result each time it’s invoked, and it does not directly interact with the browser.')
         );
     },
 
